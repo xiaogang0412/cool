@@ -7,6 +7,6 @@ import android.util.Log;
  */
 public class ToastUtils {
     public static void toast(){
-        Log.i("wwewe","wewewewe");
+        Log.i("wwewe","wewew");
     }
 }
