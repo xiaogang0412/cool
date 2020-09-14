@@ -27,7 +27,7 @@ public class RetrofitUtils {
     private static Context context;
     private static NetConfig config;
 
-    public RetrofitUtils() {
+    private RetrofitUtils() {
     }
 
 
@@ -42,24 +42,26 @@ public class RetrofitUtils {
         return RetrofitUtils;
     }
 
-    public  void init(NetConfig netConfig){
+    public void init(NetConfig netConfig) {
         context = AppUtils.getContxt();
-       config = netConfig;
+        config = netConfig;
 
     }
 
     public static OkHttpClient getOkhttpClient(final String token) {
         Cache cache = new Cache(context.getCacheDir(), 10 * 1024 * 1024);
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .readTimeout(config.readTimeOut, TimeUnit.SECONDS).cache(cache)
-                .connectTimeout(config.connectTimeOut, TimeUnit.SECONDS).writeTimeout
-                        (config.writeTimeOut, TimeUnit.SECONDS).addInterceptor(LoggerInterceptor
+                .readTimeout(config.readTimeOut, TimeUnit.SECONDS)
+                .cache(cache).connectTimeout(config.connectTimeOut,
+                        TimeUnit.SECONDS).writeTimeout(config.writeTimeOut,
+                        TimeUnit.SECONDS).addInterceptor(LoggerInterceptor
                         .getLoggerInterceptor()).addInterceptor(new Interceptor() {
                     @NotNull
                     @Override
                     public Response intercept(@NotNull Interceptor.Chain chain) throws IOException {
-                        Request builder = chain.request().newBuilder().addHeader("Authorization",
-                                "Bearer " + token).build();
+                        Request builder = chain.request().newBuilder().
+                                addHeader("Authorization",
+                                        "Bearer " + token).build();
                         return chain.proceed(builder);
                     }
                 });
@@ -71,14 +73,13 @@ public class RetrofitUtils {
         return okHttpClient;
     }
 
-    public static <T> T create(Class<T> t,String token) {
+    public static <T> T create(Class<T> t, String token) {
         retrofit = new Retrofit.Builder().baseUrl(config.hostName)
                 .addConverterFactory(GsonConverterFactory.create()).
                         client(getOkhttpClient(token)).addCallAdapterFactory
                         (RxJavaCallAdapterFactory.create()).build();
         return retrofit.create(t);
     }
-
 
 
 }

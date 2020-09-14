@@ -61,7 +61,7 @@ public abstract class BaseMvpActivity<T extends BasePresenter,
     }
 
     @Override
-    public void showError() {
+    public void showError(String message) {
         if (loadStausLayout != null) {
             loadStausLayout.showError();
         }
@@ -70,7 +70,9 @@ public abstract class BaseMvpActivity<T extends BasePresenter,
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.detachView();
+        if(presenter.isViewAttached()) {
+            presenter.detachView();
+        }
         if (bind != null) {
             bind.unbind();
         }

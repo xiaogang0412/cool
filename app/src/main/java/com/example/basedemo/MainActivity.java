@@ -1,27 +1,23 @@
 package com.example.basedemo;
 
-import android.os.Bundle;
+import android.util.Log;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.base.ui.BaseMvpActivity;
+import com.example.base.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @author lxg
  */
 public class MainActivity extends BaseMvpActivity<UserPresenter,
-        UserView>
-        implements UserView {
-    @BindView(R.id.recycleView)
-    RecyclerView recycleView;
-private MyAdapter adapter;
+        UserView> implements UserView {
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -29,20 +25,10 @@ private MyAdapter adapter;
 
     @Override
     public void loadData() {
-        hideLoading();
     }
 
     @Override
     public void initView() {
-        adapter=new MyAdapter(this);
-        recycleView.setLayoutManager(new LinearLayoutManager(this));
-        recycleView.setAdapter(adapter);
-        List<String> datas=new ArrayList<>();
-        datas.add("1");
-        datas.add("2");
-        datas.add("3");
-        datas.add("4");
-        adapter.addData(datas);
 
     }
 
@@ -57,7 +43,8 @@ private MyAdapter adapter;
     }
 
     @Override
-    public void showSucess() {
+    public void showSucess(UserEntity userEntity) {
+        Log.i("wewewewe",userEntity.getGoodsCategoryList().get(0).getIcon());
     }
 
 

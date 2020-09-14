@@ -20,5 +20,5 @@ public interface BaseView{
     /**
      * 网络错误页面
      */
-    void showError();
+    void showError(String message);
 }

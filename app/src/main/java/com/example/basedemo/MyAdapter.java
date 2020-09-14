@@ -12,7 +12,7 @@ import com.example.base.ui.BaseViewHolder;
 
 import butterknife.BindView;
 
-public class MyAdapter extends BaseAdapter<String, MyAdapter.MyHolder> {
+public class MyAdapter extends BaseAdapter<DataBean, MyAdapter.MyHolder> {
 
 
     public MyAdapter(Context context) {
@@ -25,9 +25,8 @@ public class MyAdapter extends BaseAdapter<String, MyAdapter.MyHolder> {
     }
 
     @Override
-    public void setBindViewHolder(String data, MyHolder holder) {
-        holder.tvName.setText(data);
-        Log.i("wewewe",data);
+    public void setBindViewHolder(DataBean data, MyHolder holder) {
+        holder.tvName.setText(data.getName());
     }
 
 
@@ -37,9 +36,11 @@ public class MyAdapter extends BaseAdapter<String, MyAdapter.MyHolder> {
     }
 
     @Override
-    public void onItemClickListener(int postion, String data) {
-        Log.i("wewewewewewe",data);
+    public void onItemClickListener(int postion, DataBean data) {
+     Log.i("wewewe",data.getName());
     }
+
+
 
 
     class MyHolder extends BaseViewHolder {

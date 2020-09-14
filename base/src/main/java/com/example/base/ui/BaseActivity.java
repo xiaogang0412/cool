@@ -27,9 +27,26 @@ public  abstract class BaseActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * 初始化布局id
+     * @return
+     */
     public abstract int getLayoutId();
+
+    /**
+     * 加载数据
+     */
     public abstract void loadData();
+
+    /**
+     * 初始化控件
+     */
     public abstract void initView();
+
+    /**
+     * 设置监听
+     */
     public abstract void setListener();
 
 

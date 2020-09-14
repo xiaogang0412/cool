@@ -2,10 +2,11 @@ package com.example.basedemo;
 
 import com.example.base.presenter.BasePresenter;
 
-public class UserPresenter extends BasePresenter<UserView,UserModel> implements UserImpl {
+public class UserPresenter extends BasePresenter<UserView, UserModel>
+        implements UserImpl {
 
-    public void load(){
-        model.load("",this);
+    public void load() {
+        model.load(this);
 
     }
 
@@ -16,7 +17,7 @@ public class UserPresenter extends BasePresenter<UserView,UserModel> implements 
     }
 
     @Override
-    public void sucess() {
-        baseView.showSucess();
+    public void sucess(UserEntity userEntity) {
+        baseView.showSucess(userEntity);
     }
 }
