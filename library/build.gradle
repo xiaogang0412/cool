@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-group='com.github.lxg'
+group='com.github.xiaogang0412'
 
 android {
     compileSdkVersion 30
