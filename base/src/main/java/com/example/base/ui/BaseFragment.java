@@ -17,7 +17,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
     
     public boolean isBoundView;
-    private Unbinder unbinder;
+    protected Unbinder unbinder;
     private boolean isLazyLoaded;
     private boolean isPrepared;
     public View root;

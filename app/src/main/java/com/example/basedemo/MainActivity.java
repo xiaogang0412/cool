@@ -16,8 +16,7 @@ import butterknife.BindView;
 /**
  * @author lxg
  */
-public class MainActivity extends BaseMvpActivity<UserPresenter,
-        UserView> implements UserView {
+public class MainActivity extends BaseMvpActivity {
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -39,13 +38,10 @@ public class MainActivity extends BaseMvpActivity<UserPresenter,
 
     @Override
     protected UserPresenter bindPrensenter() {
-        return new UserPresenter();
+        return null;
     }
 
-    @Override
-    public void showSucess(UserEntity userEntity) {
-        Log.i("wewewewe",userEntity.getGoodsCategoryList().get(0).getIcon());
-    }
+
 
 
 }

@@ -22,9 +22,23 @@ public abstract class BaseMvpFragment<T extends BasePresenter,V
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         presenter= bindPrensenter();
-        presenter.attachView(this);
+        if(presenter!=null) {
+            presenter.attachView(this);
+        }
         loadStausLayout = root.findViewWithTag("loadview");
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null&&presenter.isViewAttached()) {
+            presenter.detachView();
+        }
+        if (unbinder != null) {
+           unbinder.unbind();
+        }
+
     }
 
     protected abstract T bindPrensenter();

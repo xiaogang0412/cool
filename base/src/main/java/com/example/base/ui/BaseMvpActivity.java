@@ -24,7 +24,9 @@ public abstract class BaseMvpActivity<T extends BasePresenter,
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         presenter = bindPrensenter();
-        presenter.attachView(this);
+        if(presenter!=null) {
+            presenter.attachView(this);
+        }
         super.onCreate(savedInstanceState);
         View view = View.inflate(this, getLayoutId(), null);
         setContentView(view);
@@ -70,7 +72,7 @@ public abstract class BaseMvpActivity<T extends BasePresenter,
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(presenter.isViewAttached()) {
+        if(presenter!=null&&presenter.isViewAttached()) {
             presenter.detachView();
         }
         if (bind != null) {
