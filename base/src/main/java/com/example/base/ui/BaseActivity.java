@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.base.utils.AppBarUtil;
+
 import java.util.List;
 
 public  abstract class BaseActivity extends AppCompatActivity {
@@ -153,5 +155,9 @@ public  abstract class BaseActivity extends AppCompatActivity {
             finish();
         }
     }
+    public void setFullScreen() {
+        AppBarUtil.setStatusBarFullTransparent(this);
+    }
+
 
 }
