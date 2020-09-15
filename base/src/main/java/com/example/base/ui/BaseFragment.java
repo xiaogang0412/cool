@@ -36,6 +36,8 @@ public abstract class BaseFragment extends Fragment {
             unbinder = ButterKnife.bind(this, root);
             isBoundView = true;
             loadStausLayout = root.findViewWithTag("loadview");
+            initView();
+            setListener();
 
 
         }
