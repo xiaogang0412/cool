@@ -15,8 +15,6 @@ import com.example.base.widget.LoadStausLayout;
 public abstract class BaseMvpFragment<T extends BasePresenter,V 
         extends BaseView> extends BaseFragment implements BaseView{
     protected T presenter;
-    protected LoadStausLayout loadStausLayout;
-
 
     @Nullable
     @Override
@@ -25,7 +23,6 @@ public abstract class BaseMvpFragment<T extends BasePresenter,V
         if(presenter!=null) {
             presenter.attachView(this);
         }
-        loadStausLayout = root.findViewWithTag("loadview");
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

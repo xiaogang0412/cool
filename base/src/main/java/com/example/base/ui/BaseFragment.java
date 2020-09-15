@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.base.widget.LoadStausLayout;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -22,6 +24,7 @@ public abstract class BaseFragment extends Fragment {
     private boolean isPrepared;
     public View root;
     public   Bundle arguments;
+    protected LoadStausLayout loadStausLayout;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -32,7 +35,9 @@ public abstract class BaseFragment extends Fragment {
             root = inflater.inflate(getLayoutId(), container,false);
             unbinder = ButterKnife.bind(this, root);
             isBoundView = true;
-          
+            loadStausLayout = root.findViewWithTag("loadview");
+
+
         }
 
         return root;
